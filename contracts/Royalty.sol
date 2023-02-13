@@ -133,6 +133,21 @@ contract ERC721Token is
         _unpause();
     }
 
+    /**
+     * @dev Sets `_tokenURI` as the tokenURI of `tokenId`.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
+    function updateTokenUri(uint256 tokenId, string memory _tokenURI)
+        external
+        onlyOwner
+        whenNotPaused
+    {
+        _setTokenURI(tokenId, _tokenURI);
+    }
+
     function _authorizeUpgrade(address) internal override onlyOwner {}
 
     function _burn(uint256 tokenId)
